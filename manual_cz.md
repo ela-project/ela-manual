@@ -1,5 +1,10 @@
 # Návod na použití Logického Analyzátoru ELA
 
+ELA projekt je založený na bakalářské práci Víta Vaněčka tvořenou pod vedením doc. Fischera na ČVUT v Praze - FEL - Katedra Měření.
+
+Originální bakalářskou práci psanou v češtině lze nalézt zde:
+ - [https://dspace.cvut.cz/handle/10467/89986](https://dspace.cvut.cz/handle/10467/89986)
+
 ## Obsah
 
 - [Úvod](#introduction)
@@ -7,7 +12,7 @@
 - [Stažení aplikace PuleView](#pulseview-download)
 - [Použité Piny na desce NUCLEO](#nucleo-pinout)
 - [Parametry logického analyzátoru](#parameters)
-- [Základní ovládání PulseView](basic-usage)
+- [Základní ovládání PulseView](#basic-usage)
 - [Ukázka použití](#usage-example)
 
 ## <a name="introduction"></a> Úvod
@@ -66,7 +71,9 @@ Logický analyzátor dosahuje následujících parametrů:
 
 ### Poznámky
 
-- Pouze vstupy PC6 (D6) a PC7 (D7) jsou 5V tolerantní. Zbylé vstupy proto prosím nepřipojujte na signál o napětí vyšším než 3.3V. Popřípadě použijte 
+- Pouze vstupy PC6 (D6) a PC7 (D7) jsou 5V tolerantní. Zbylé vstupy proto prosím nepřipojujte na signál o napětí vyšším než 3.3V.
+
+- Je vhodné použít ochranný rezistor (např. 470R) zapojený do série se vstupem.
 
 - Při maximální vzorkovací frekvenci může nastat vypadávání vzorků, to příliš neovlivní dekódování v PulseView, ale je lepší použít tuto vzorkovací frekvenci pouze pokud je to opravdu nutné.
 
