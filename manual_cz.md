@@ -52,7 +52,9 @@ Aplikaci není nutné instalovat, stačí rozbalit `.zip` do vámi zvolené slo�
 
 ELA Firmware používá piny PC0 - PC7. V PulseView jsou kanály číslované stejně jako piny (D0 odpovídá PC0).
 
-`GEN` značí generátor obdélníkového signálu o frekvenci 10kHz pro účely testování.
+Dva piny jsou vyhrazeny pro generátory pro testovací účely:
+- `GEN 10k` značí generátor obdélníkového signálu o frekvenci 10kHz.
+- `GEN 8k` značí generátor obdélníkového signálu o frekvenci 8kHz.
 
 ![Nucleo pinout](./images/Nucleo_Pinout.svg)
 
@@ -67,7 +69,7 @@ Logický analyzátor dosahuje následujících parametrů:
 - vzorkovací frekvence až 12MHz
 - jednokanálový Trigger
 - nastavitelný poměr vzorků před a po trigger
-- generátor obdélníkového signálu s frekvencí 10kHz
+- generátory obdélníkového signálu s frekvencí 8kHz a 10kHz
 
 ### Poznámky
 
