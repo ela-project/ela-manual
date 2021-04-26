@@ -56,7 +56,7 @@ Dva piny jsou vyhrazeny pro generátory pro testovací účely:
 - `GEN 10k` značí generátor obdélníkového signálu o frekvenci 10kHz.
 - `GEN 8k` značí generátor obdélníkového signálu o frekvenci 8kHz.
 
-![Nucleo pinout](./images/Nucleo_Pinout.svg)
+<img src="./images/Nucleo_Pinout.svg" width="600">
 
 <P style="page-break-before: always">
 
@@ -73,13 +73,13 @@ Logický analyzátor dosahuje následujících parametrů:
 
 ### Poznámky
 
-- Pouze vstupy PC6 (D6) a PC7 (D7) jsou 5V tolerantní. Zbylé vstupy proto prosím nepřipojujte na signál o napětí vyšším než 3.3V.
+- Pouze vstupy PC6 (D6) a PC7 (D7) jsou 5V tolerantní. Zbylé proto prosím nepřipojujte na signál o napětí vyšším než 3.3V.
 
 - Je vhodné použít ochranný rezistor (např. 470R) zapojený do série se vstupem.
 
-- Při maximální vzorkovací frekvenci může nastat vypadávání vzorků, to příliš neovlivní dekódování v PulseView, ale je lepší použít tuto vzorkovací frekvenci pouze pokud je to opravdu nutné.
+- Při maximální vzorkovací frekvenci může nastat vypadávání vzorků. To příliš neovlivní dekódování v PulseView, ale je lepší použít tuto vzorkovací frekvenci pouze pokud je to opravdu nutné.
 
-- Při maximálním počtu vzorků může chvíli trvat, než mikrořadič odešle všechna data do PulseView. Je proto dobré nepoužívat zbytečně vysoké hodnoty, pokud to není potřeba.
+- Při maximálním počtu vzorků může chvíli trvat, než mikrořadič odešle všechna data do PulseView. Proto je dobré, pokud to není potřeba, nepoužívat zbytečně vysoké hodnoty.
 
 - Trigger je jednokanálový, ale v PulseView lze nastavit trigger na libovolný počet kanálů. V tomto případě platí trigger na kanálu s nejnižším číslem.
 
@@ -100,9 +100,9 @@ V seznamu zařízení vyberte `Embedded logic analyzer (ela)`:
 
 ![PW Connect 01](./images/PW_Connect_01.png)
 
----
+<P style="page-break-before: always">
 
-Následně zaškrtněte políčko `Serial Port` a zde najděte COM port které odpovídá Nucleu. Pokud nevíte číslo COM portu, můžete ho najít v:
+Následně zaškrtněte políčko `Serial Port` a zde najděte COM port který odpovídá Nucleu. Pokud nevíte číslo COM portu, můžete ho najít v:
 `Ovládací panely`->`Správce zařízení`->`Porty (COM a LPT)`
 
 V políčku baudrate nastavte `115200`. Následně klikněte na `Scan for devices using driver above` a v dolním seznamu by se mělo objevit zařízení `ELA_F303RE`. Vyberte zařízení a klikněte na `OK`.
@@ -134,19 +134,20 @@ Mikrořadič získá data z RTC modulu pomocí I2C a následně pošle zprávu o
 
 ### Schéma zapojení
 
-![Channel settings](./images/Testing_circuit_diagram.svg)
+<!-- ![Channel settings](./images/Testing_circuit_diagram.svg) -->
+<img src="./images/Testing_circuit_diagram.svg" width="500">
 
 <P style="page-break-before: always">
 
 ### Nastavení PulseView
 
-V PulseView byli vypnuty všechny nepoužité vstupy logického analyzátoru a zapnuté byli pojmenovány podle toho k čemu jsou připojeny. 
+V PulseView byly vypnuty všechny nepoužité vstupy logického analyzátoru a zapnuté byly pojmenovány podle toho, k čemu jsou připojeny.  
 
-Běžná komunikace I2C má frekvenci hodinového signálu 100kHz. Vzorkovací frekvenci tedy nastavíme na více než dvojnásobek, aby se neprojevil aliasing, v příkladě bylo použito 500kHz.
+Běžná komunikace I2C má frekvenci hodinového signálu 100kHz. Vzorkovací frekvenci tedy nastavíme na více než dvojnásobek, aby se neprojevil aliasing. V příkladu bylo použito 500kHz.
 
-Počet vzorků byl ponechán na výchozích 5k. V případě že se nezaznamená celá komunikace by byl zvýšen.
+Počet vzorků byl ponechán na výchozích 5k. V případě, že se nezaznamená celá komunikace, by byl zvýšen. 
 
-Komunikace mezi mikrořadičem a RTC probíhá každé 2 vteřiny. Pokud by se tedy vzorkování spustilo okamžitě, byl by s největší pravděpodobností zaznamenán neměnící se signál. Byl proto nastaven trigger na doběžnou hranu na kanálu SDA.
+Komunikace mezi mikrořadičem a RTC probíhá každé 2 vteřiny. Pokud by se vzorkování spustilo okamžitě, byl by s největší pravděpodobností zaznamenán neměnící se signál. Proto byl nastaven trigger na doběžnou hranu na kanálu SDA.
 
 ![PW Example 00](./images/PW_Example_00.png)
 
@@ -162,9 +163,9 @@ Po spuštění vzorkování pomocí `Run` se objeví v PulseView zaznamenaná ko
 
 ### Dékódování I2C a UART
 
-V seznamu dekodérů v PulseView byla vybrána komunikace I2C a UART. Vzhledem k tomu že byli vstupní kanály pojmenovány podle komunikace, dekodéry si automaticky nastavili vstupy. Popřípadě lze v nastavení dekodéru zvolit vstupní kanály, které mají být použity. 
+V seznamu dekodérů v PulseView byla vybrána komunikace I2C a UART. Vzhledem k tomu, že vstupní kanály byly pojmenovány podle komunikace, dekodéry si automaticky nastavily vstupy. Popřípadě lze v nastavení dekodéru zvolit vstupní kanály, které mají být použity. 
 
-Oba dekodéry zobrazí přesně data, která jsou odesílána. V případě UART byl dekodér přepnut, aby zobrazoval ASCII znaky místo hexidecimálních hodnot. UART také musí mít nastavený správný Baud Rate, ten lze odvodit pomocí kurzorů nebo experimentálně.
+Oba dekodéry zobrazí přesná data, která jsou odesílána. V případě UART byl dekodér přepnut, aby zobrazoval ASCII znaky místo hexidecimálních hodnot. UART také musí mít nastavený správný Baud Rate, ten lze odvodit pomocí kurzorů nebo experimentálně.
 
 ![PW Example 02](./images/PW_Example_02.png)
 
@@ -172,6 +173,6 @@ Oba dekodéry zobrazí přesně data, která jsou odesílána. V případě UART
 
 <P style="page-break-before: always">
 
-V PulseView je také možnost zobrazit všechna data která byla dekódována. V levém horním rohu byl vybrán `Binary Decoder Output View`. V PulseView se pak objeví nové okno, ve kterém byl vybrán dekodér `UART` a `TX Dump`. Zde pak lze vidět všechny znaky odeslané po UARTu.
+V PulseView je možnost zobrazit i všechna data, která byla dekódována. V levém horním rohu byl vybrán `Binary Decoder Output View`. V PulseView se pak objeví nové okno, ve kterém byl vybrán dekodér `UART` a `TX Dump`. Zde lze vidět všechny znaky odeslané po UARTu.
 
 ![PW Example 03](./images/PW_Example_03.png)
